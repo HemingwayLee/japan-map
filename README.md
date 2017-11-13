@@ -1,14 +1,13 @@
-#Japan Map (jQuery plugin)
+# Japan Map
 
-jQuery plugin to show clickable map of prefectures (or area) of Japan.
-
-[Download, Quick Start, Examples, Usage] (http://takemaru-hirai.github.io/japan-map/)
+It show clickable map of prefectures (or area) of Japan.
 
 ## Installation
 
 Include the script after the jQuery library:
 
 ```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="/path/to/jquery.japan-map.js"></script>
 ```
 
@@ -29,13 +28,6 @@ $(target).japanMap({
     }
 });
 ```
-
-Please visit [the Project Page] (http://takemaru-hirai.github.io/japan-map/) to see more informations.
-
-
-## Authors
-
-[Takemaru Hirai](https://github.com/takemaru-hirai)
 
 ##License
 

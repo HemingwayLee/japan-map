@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Japan Map - EXAMPLE 3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../jquery.japan-map.min.js"></script>
+    <script src="result.js"></script>
+    <script>
+        $(function(){
+            result = JSON.parse(areas);
+            $("#map").japanMap(
+                {
+                    areas  : result,
+                    //selection : "prefecture",
+                    //borderLineWidth: 0.25,
+                    //drawsBoxLine : false,
+                    borderLineColor: "#000000", 
+                    movesIslands : true,
+                    width: 600,
+                    /*font : "MS Mincho",
+                    fontSize : 12,
+                    fontColor : "areaColor",
+                    fontShadowColor : "black",*/
+                    //showsPrefectureName: true,
+                    //prefectureNameType: "short",
+                    /*onSelect:function(data){
+                        alert(data.name);
+                    },*/
+                    onHover:function(data){
+                        $("#text").html(data.name + "  " + data.area.name);
+                        $("#text").css("background", "red"/*data.area.color*/);
+                    }
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+    <span id="text" style="display:inline-block; width: 602px; color: #ffffff; text-align: center"></span>
+    <div id="map"></div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Windows ###
+Thumbs.db
+ehthumbs.db
+
+### PlayFramework and SBT ###
+.eclipse
+.idea
+.idea_modules
+.classpath
+.project
+.settings
+.cache
+.history
+.lib/

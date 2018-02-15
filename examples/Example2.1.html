@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Japan Map - EXAMPLE 2</title>
+    <title>Japan Map - EXAMPLE 2.1</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../jquery.japan-map.js"></script>
     <script>
@@ -16,18 +16,12 @@
 
             $("#map").japanMap(
                 {
-                    areas  : areas,
-                    //selection : "prefecture",
-                    //borderLineWidth: 0.25,
-                    //drawsBoxLine : false,
-                    movesIslands : true,
+                    areas: areas,
+                    movesIslands: true,
+                    showsPrefectureName: true,
                     width: 800,
-                    /*font : "MS Mincho",
-                    fontSize : 12,
-                    fontColor : "areaColor",
-                    fontShadowColor : "black",*/
-                    //showsPrefectureName: true,
-                    //prefectureNameType: "short",
+                    fontSize: 12,
+                    fontColor: "#000000",
                     onSelect:function(data){
                         alert(data.name);
                     },

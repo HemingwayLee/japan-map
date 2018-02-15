@@ -19,15 +19,18 @@ Creating the clickable map of Japan:
 $(target).japanMap( options );
 ```
 
-EXAMPLE - Alert prefecture name when clicked:
+EXAMPLE 1 - Alert prefecture name when clicking:
 
 ```javascript
 $(target).japanMap({
     onSelect : function(data){
-        alert(data.name);     // "北海道" (Hokkaido) will be shown on dialog when you click Hokkaido Island.
+        alert(data.name);     // "北海道" will be shown on dialog when you click Hokkaido Island.
     }
 });
 ```
+
+![2018-02-15 12 22 37](https://user-images.githubusercontent.com/8428372/36240212-05db87be-124b-11e8-8c6a-10858c1bfc7e.png)
+
 
 ## License
 

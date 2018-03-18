@@ -11,25 +11,13 @@
             result = JSON.parse(areas);
             $("#map").japanMap(
                 {
-                    areas  : result,
-                    //selection : "prefecture",
-                    //borderLineWidth: 0.25,
-                    //drawsBoxLine : false,
+                    areas: result,
                     borderLineColor: "#000000", 
                     movesIslands : true,
                     width: 600,
-                    /*font : "MS Mincho",
-                    fontSize : 12,
-                    fontColor : "areaColor",
-                    fontShadowColor : "black",*/
-                    //showsPrefectureName: true,
-                    //prefectureNameType: "short",
-                    /*onSelect:function(data){
-                        alert(data.name);
-                    },*/
                     onHover:function(data){
                         $("#text").html(data.name + "  " + data.area.name);
-                        $("#text").css("background", "red"/*data.area.color*/);
+                        $("#text").css("background", "red");
                     }
                 }
             );

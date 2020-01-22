@@ -12,16 +12,32 @@
  * Date: 2014-05-15
  */
 
-;(function($){
+// IIFE
+;(function ready(fn) {
+    if (document.readyState != 'loading'){
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+})(function() {
     "use strict";
 
-    $.fn.japanMap = function(options){
-        var target = $(this);
+    Object.prototype.japanMap = function(options) {
+        var target = this;
 
         for (var option in options)
             if (options.hasOwnProperty(option) && options[option] == null) options[option] = undefined;
 
-        options = $.extend({
+        var extend = function(a, b){
+            for (var key in b) {
+                if(b.hasOwnProperty(key)) {
+                    a[key] = b[key];
+                }
+            }
+            return a;
+        }
+
+        options = extend({
             type                : "canvas",       // Only type of "canvas" exist now. Perhaps "svg" in future.
             selection           : "prefecture",   // "prefecture" or "area"
             width               : null,           // Canvas will be scaled to larger one of "width" and "height".
@@ -1328,5 +1344,4 @@
         41 : "Saga",      42 : "Nagasaki",  43 : "Kumamoto", 44 : "Oita",      45 : "Miyazaki",
         46 : "Kagoshima", 47 : "Okinawa"
     };
-
-})(jQuery);
+});

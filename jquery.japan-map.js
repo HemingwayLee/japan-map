@@ -225,7 +225,7 @@
                 }
 
                 _target.on(_move, function(e){
-                    point	= e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
+                    point = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
 
                     if (self.isHovering()) {
                         self.pointer = {
@@ -240,7 +240,7 @@
                 });
 
                 $(document).on(_end, function(e){
-                    point	= e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
+                    point = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
 
                     if (self.data.code !== null && self.data.name != null && "onSelect" in self.options){
                         setTimeout(function(){
@@ -269,7 +269,7 @@
             });
 
             _target.on("mousedown", function(e){
-                var point	= e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
+                var point = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
 
                 if (self.data.code !== null && self.data.name != null && "onSelect" in self.options){
                     setTimeout(function(){

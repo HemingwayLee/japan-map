@@ -203,88 +203,30 @@
 
     Map.prototype.addEvent = function(){
         var self = this;
-        var _target = $(this.element);
+        var _target = this.element;
 
-        if (_ua.Pointer && ! isWinDesktop || _ua.MSPointer && ! isWinDesktop || _ua.Touch){
+        _target.addEventListener("mousemove", function(e){
+            self.pointer = {
+                x: e.pageX - _target.offsetLeft,
+                y: e.pageY - _target.offsetTop
+            };
+            self.render();
 
-            if (_ua.Pointer || _ua.MSPointer){
-                _target.css("-ms-touch-action", "none").css("touch-action", "none");
+        });
+
+        _target.addEventListener("mousedown", function(e){
+            if (self.data.code !== null && self.data.name != null && "onSelect" in self.options){
+                setTimeout(function(){
+                    self.options.onSelect(self.data);
+                } ,0);
             }
+            self.pointer = null;
+        });
 
-            _target.on(_start, function(e){
-                var point  = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
-
-                self.pointer = {
-                    x: point.pageX - _target[0].offsetLeft,
-                    y: point.pageY - _target[0].offsetTop
-                };
-                self.render();
-                if (self.isHovering()) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-
-                _target.on(_move, function(e){
-                    point = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
-
-                    if (self.isHovering()) {
-                        self.pointer = {
-                            x: point.pageX - _target[0].offsetLeft,
-                            y: point.pageY - _target[0].offsetTop
-                        };
-
-                        self.render();
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                });
-
-                $(document).on(_end, function(e){
-                    point = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
-
-                    if (self.data.code !== null && self.data.name != null && "onSelect" in self.options){
-                        setTimeout(function(){
-                            self.options.onSelect(self.data);
-                        } ,0);
-                    }
-                    self.pointer = null;
-
-                    _target.off(_move);
-                    $(document).off(_end);
-                });
-            });
-
-
-        } else {
-
-            _target.on("mousemove", function(e){
-                var point  = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
-
-                self.pointer = {
-                    x: point.pageX - _target[0].offsetLeft,
-                    y: point.pageY - _target[0].offsetTop
-                };
-                self.render();
-
-            });
-
-            _target.on("mousedown", function(e){
-                var point = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
-
-                if (self.data.code !== null && self.data.name != null && "onSelect" in self.options){
-                    setTimeout(function(){
-                        self.options.onSelect(self.data);
-                    } ,0);
-                }
-                self.pointer = null;
-            });
-
-            _target.on("mouseout", function(e){
-                self.pointer = null;
-                self.render();
-            });
-        }
-
+        _target.addEventListener("mouseout", function(e){
+            self.pointer = null;
+            self.render();
+        });
     };
 
     Map.prototype.findPrefectureByCode = function(code){

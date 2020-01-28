@@ -113,34 +113,6 @@
             return other;
         };
     }
-    // ---------------------------------------------------------------------------------------------------------------
-    // I guess "Cross-browser" may be a word of fantasy...
-    // https://w3g.jp/blog/studies/touches_events
-    // http://stackoverflow.com/questions/8751479/javascript-detect-metro-ui-version-of-ie
-    // ---------------------------------------------------------------------------------------------------------------
-    var _ua = (function(){
-        return {
-            Touch : typeof document.ontouchstart !== "undefined",
-            Pointer : window.navigator.pointerEnabled,
-            MSPointer : window.navigator.msPointerEnabled
-        }
-    })();
-
-    var isWinDesktop = (function(){
-        var supported = null;
-        try {
-            supported = !!new ActiveXObject("htmlfile");
-        } catch (e) {
-            supported = false;
-        }
-        return supported;
-    })();
-
-    var _start = _ua.Pointer ? 'pointerdown'  : _ua.MSPointer ? 'MSPointerDown'  : _ua.Touch ? 'touchstart' : 'mousedown' ;
-    var _move  = _ua.Pointer ? 'pointermove'  : _ua.MSPointer ? 'MSPointerMove'  : _ua.Touch ? 'touchmove'  : 'mousemove' ;
-    var _end   = _ua.Pointer ? 'pointerup'    : _ua.MSPointer ? 'MSPointerUp'    : _ua.Touch ? 'touchend'   : 'mouseup'   ;
-    var _enter = _ua.Pointer ? 'pointerenter' : _ua.MSPointer ? 'MSPointerEnter' : _ua.Touch ? 'touchenter' : 'mouseenter';
-    var _leave = _ua.Pointer ? 'pointerleave' : _ua.MSPointer ? 'MSPointerLeave' : _ua.Touch ? 'touchleave' : 'mouseleave';
 
     // ---------------------------------------------------------------------------------------------------------------
     /* Base Class */
